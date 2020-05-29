@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.scContextFile org.eventb.core.accurate="true" org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase">
+    <org.eventb.core.scCarrierSet name="PEOPLE" org.eventb.core.source="/Question3/Vehicle_ctx.buc|org.eventb.core.contextFile#Vehicle_ctx|org.eventb.core.carrierSet#'" org.eventb.core.type="ℙ(PEOPLE)"/>
+    <org.eventb.core.scCarrierSet name="VALUE" org.eventb.core.source="/Question3/Vehicle_ctx.buc|org.eventb.core.contextFile#Vehicle_ctx|org.eventb.core.carrierSet#)" org.eventb.core.type="ℙ(VALUE)"/>
+    <org.eventb.core.scCarrierSet name="VEHICLES" org.eventb.core.source="/Question3/Vehicle_ctx.buc|org.eventb.core.contextFile#Vehicle_ctx|org.eventb.core.carrierSet#(" org.eventb.core.type="ℙ(VEHICLES)"/>
+</org.eventb.core.scContextFile>

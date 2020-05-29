@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="stackarr ≔ ∅" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="arrisempty ≔ TRUE" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="arrisfull ≔ FALSE" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="popel :∈ ELEMENT" org.eventb.core.label="act4"/>
+        <org.eventb.core.witness name="+" org.eventb.core.label="element'" org.eventb.core.predicate="element' = popel'"/>
+    </org.eventb.core.event>
+    <org.eventb.core.refinesMachine name="(" org.eventb.core.target="Stack"/>
+    <org.eventb.core.seesContext name=")" org.eventb.core.target="Stack_ctx"/>
+    <org.eventb.core.variable name="*" org.eventb.core.identifier="stackarr"/>
+    <org.eventb.core.variable name="+" org.eventb.core.identifier="arrisfull"/>
+    <org.eventb.core.variable name="," org.eventb.core.identifier="arrisempty"/>
+    <org.eventb.core.invariant name="-" org.eventb.core.label="inv1" org.eventb.core.predicate="stackarr ∈ 0‥top−1 → ELEMENT"/>
+    <org.eventb.core.invariant name="." org.eventb.core.label="inv2" org.eventb.core.predicate="finite(stackarr)"/>
+    <org.eventb.core.variable name="/" org.eventb.core.identifier="popel"/>
+    <org.eventb.core.invariant name="0" org.eventb.core.label="inv3" org.eventb.core.predicate="popel ∈ ELEMENT"/>
+    <org.eventb.core.invariant name="1" org.eventb.core.label="inv4" org.eventb.core.predicate="arrisfull ∈ BOOL"/>
+    <org.eventb.core.invariant name="2" org.eventb.core.label="inv5" org.eventb.core.predicate="arrisempty ∈ BOOL"/>
+    <org.eventb.core.event name="3" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="push">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="push"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="e"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="e ∈ ELEMENT"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="stackarr ≔ stackarr ∪ { card(stackarr) ↦ e }" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="arrisempty = TRUE"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="arrisfull = FALSE"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="card(stackarr) &lt; maxsize"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="card(stackarr) ∈ dom(stackarr)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.invariant name="4" org.eventb.core.label="inv6" org.eventb.core.predicate="card(stackarr) = top"/>
+    <org.eventb.core.event name="5" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="pop">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="pop"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="card(stackarr) &gt; 0"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="popel ≔ stackarr(card(stackarr)−1)" org.eventb.core.label="act1"/>
+        <org.eventb.core.witness name="*" org.eventb.core.label="element'" org.eventb.core.predicate="element' = popel'"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="finite({card(stackarr) − 1} ⩤ stackarr)"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="card({card(stackarr) − 1} ⩤ stackarr)=card(stackarr) − 1"/>
+        <org.eventb.core.action name="." org.eventb.core.assignment="stackarr ≔ {card(stackarr)−1} ⩤ stackarr" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd4" org.eventb.core.predicate="stackarr(card(stackarr) − 1) ∈ ran(stackarr)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="6" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="empty">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="empty"/>
+        <org.eventb.core.witness name="(" org.eventb.core.label="query'" org.eventb.core.predicate="query' = arrisempty'"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="arrisempty :∣ (card(stackarr) = 0 ⇒ arrisempty' = TRUE) ∧ (card(stackarr) ≠ 0 ⇒ arrisempty' = FALSE)" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="7" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="full">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="full"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="arrisfull :∣ (card(stackarr) = maxsize ⇒ arrisfull'=TRUE) ∧ (card(stackarr) ≠ maxsize ⇒ arrisfull' = FALSE)" org.eventb.core.label="act1"/>
+        <org.eventb.core.witness name=")" org.eventb.core.label="query'" org.eventb.core.predicate="query' = arrisfull'"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

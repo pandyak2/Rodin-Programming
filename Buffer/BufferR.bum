@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.witness name="'" org.eventb.core.label="element'" org.eventb.core.predicate="element' = re'"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="re :∈ ELEMENT" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="a :∈ 1‥maxsize → ELEMENT" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="f ≔ 0" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="b ≔ 0" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="bufferisempty ≔ TRUE" org.eventb.core.label="act5"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="bufferisfull ≔ FALSE" org.eventb.core.label="act6"/>
+    </org.eventb.core.event>
+    <org.eventb.core.refinesMachine name="(" org.eventb.core.target="Buffer"/>
+    <org.eventb.core.seesContext name=")" org.eventb.core.target="Buffer_ctx"/>
+    <org.eventb.core.variable name="*" org.eventb.core.identifier="a"/>
+    <org.eventb.core.variable name="+" org.eventb.core.identifier="f"/>
+    <org.eventb.core.variable name="," org.eventb.core.identifier="b"/>
+    <org.eventb.core.variable name="-" org.eventb.core.identifier="bufferisempty"/>
+    <org.eventb.core.variable name="." org.eventb.core.identifier="bufferisfull"/>
+    <org.eventb.core.invariant name="/" org.eventb.core.label="inv1" org.eventb.core.predicate="a ∈ 1‥maxsize → ELEMENT"/>
+    <org.eventb.core.invariant name="0" org.eventb.core.label="inv2" org.eventb.core.predicate="f = front"/>
+    <org.eventb.core.invariant name="1" org.eventb.core.label="inv3" org.eventb.core.predicate="b = back"/>
+    <org.eventb.core.invariant name="2" org.eventb.core.label="inv4" org.eventb.core.predicate="bufferisfull ∈ BOOL"/>
+    <org.eventb.core.invariant name="3" org.eventb.core.label="inv5" org.eventb.core.predicate="bufferisempty ∈ BOOL"/>
+    <org.eventb.core.invariant name="5" org.eventb.core.label="inv6" org.eventb.core.predicate="buffer ∈ ℤ ⇸ ELEMENT"/>
+    <org.eventb.core.variable name="6" org.eventb.core.identifier="re"/>
+    <org.eventb.core.invariant name="7" org.eventb.core.label="inv7" org.eventb.core.predicate="re ∈ ELEMENT"/>
+    <org.eventb.core.event name="8" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="add">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="add"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="e"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="e ∈ ELEMENT"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="b ≔ b+1" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd2" org.eventb.core.predicate="b − f &lt; maxsize"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="a ≔ a  {(b mod maxsize)↦e}" org.eventb.core.label="act3"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd3" org.eventb.core.predicate="a{b mod maxsize ↦ e}∈1 ‥ maxsize → ELEMENT"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="9" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="remove">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="remove"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="b −f &gt; 0"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd2" org.eventb.core.predicate="f ∈ f ‥ b − 1"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="re ≔ a(f mod maxsize)" org.eventb.core.label="act1"/>
+        <org.eventb.core.witness name="+" org.eventb.core.label="element'" org.eventb.core.predicate="element' = re'"/>
+        <org.eventb.core.action name="," org.eventb.core.assignment="f ≔ f+ 1" org.eventb.core.label="act2"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="f mod maxsize∈dom(a)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name=":" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="empty">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="empty"/>
+        <org.eventb.core.witness name="(" org.eventb.core.label="query'" org.eventb.core.predicate="query' = bufferisempty'"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="bufferisempty :∣ (f=b ⇒bufferisempty'=TRUE) ∧ (f≠b ⇒bufferisempty'=FALSE)" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name=";" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="full">
+        <org.eventb.core.refinesEvent name="'" org.eventb.core.target="full"/>
+        <org.eventb.core.witness name="(" org.eventb.core.label="query'" org.eventb.core.predicate="query' = bufferisfull'"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="bufferisfull :∣ (b−f = maxsize ⇒bufferisfull'=TRUE) ∧ (b−f ≠ maxsize ⇒ bufferisfull'=FALSE)" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

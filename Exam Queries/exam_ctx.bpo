@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="0">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poIdentifier name="REGISTERED" org.eventb.core.type="ℙ(REGISTERED)"/>
+        <org.eventb.core.poIdentifier name="MARKS" org.eventb.core.type="ℙ(ℤ)"/>
+        <org.eventb.core.poIdentifier name="passmark" org.eventb.core.type="ℤ"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/Ques4/exam_ctx.bpo|org.eventb.core.poFile#exam_ctx|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="passmark=40" org.eventb.core.source="/Ques4/exam_ctx.buc|org.eventb.core.contextFile#exam_ctx|org.eventb.core.axiom#)"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="MARKS=passmark ‥ 100" org.eventb.core.source="/Ques4/exam_ctx.buc|org.eventb.core.contextFile#exam_ctx|org.eventb.core.axiom#+"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="MARKS=ℕ" org.eventb.core.source="/Ques4/exam_ctx.buc|org.eventb.core.contextFile#exam_ctx|org.eventb.core.axiom#,"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

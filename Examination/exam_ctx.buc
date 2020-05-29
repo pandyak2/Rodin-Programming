@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.carrierSet name="'" org.eventb.core.identifier="REGISTERED"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="(" org.eventb.core.identifier="passmark"/>
+    <org.eventb.core.axiom name=")" org.eventb.core.label="axm1" org.eventb.core.predicate="passmark = 40"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="*" org.eventb.core.identifier="MARKS"/>
+    <org.eventb.core.axiom name="+" org.eventb.core.label="axm2" org.eventb.core.predicate="MARKS = passmark ‥ 100"/>
+</org.eventb.core.contextFile>
