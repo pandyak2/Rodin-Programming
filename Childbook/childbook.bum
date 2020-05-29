@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="readbooks ≔ ∅" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="notreadbooks ≔ ∅" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="children ≔ ∅" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="book :∈ BOOKS" org.eventb.core.label="act4"/>
+        <org.eventb.core.action name="+" org.eventb.core.assignment="books ≔ ∅" org.eventb.core.label="act5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.seesContext name="(" org.eventb.core.target="childbook_ctx"/>
+    <org.eventb.core.variable name=")" org.eventb.core.identifier="children"/>
+    <org.eventb.core.invariant name="," org.eventb.core.label="inv1" org.eventb.core.predicate="books ∈ (CHILDREN ⇸ BOOKS)"/>
+    <org.eventb.core.invariant name="-" org.eventb.core.label="inv2" org.eventb.core.predicate="children ∈ ℙ(CHILDREN)"/>
+    <org.eventb.core.event name="1" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="record">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="s"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="b"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ CHILDREN"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="b ∈ BOOKS"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="readbooks ≔ readbooks  {s ↦ b}" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd3" org.eventb.core.predicate="b ∉ ran(notreadbooks)"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd4" org.eventb.core.predicate="b ∈ ran(readbooks)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="2" org.eventb.core.identifier="readbooks"/>
+    <org.eventb.core.variable name="3" org.eventb.core.identifier="notreadbooks"/>
+    <org.eventb.core.invariant name="9" org.eventb.core.label="inv3" org.eventb.core.predicate="children = dom(books)"/>
+    <org.eventb.core.event name=";" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="newbook">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name="(" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ CHILDREN"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="book ≔ notreadbooks(s)" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="s ∈ dom(books)"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="s ∈ dom(notreadbooks)"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="s ∉ dom(readbooks)"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="=" org.eventb.core.identifier="books"/>
+    <org.eventb.core.invariant name="&gt;" org.eventb.core.label="inv4" org.eventb.core.predicate="readbooks ⊆ books"/>
+    <org.eventb.core.invariant name="?" org.eventb.core.label="inv5" org.eventb.core.predicate="notreadbooks ⊆ books"/>
+    <org.eventb.core.invariant name="@" org.eventb.core.label="inv6" org.eventb.core.predicate="readbooks ∩ notreadbooks = ∅ "/>
+    <org.eventb.core.variable name="A" org.eventb.core.identifier="book"/>
+    <org.eventb.core.invariant name="B" org.eventb.core.label="inv7" org.eventb.core.predicate="book ∈ BOOKS"/>
+    <org.eventb.core.invariant name="C" org.eventb.core.label="inv8" org.eventb.core.predicate="children = dom(readbooks)"/>
+    <org.eventb.core.invariant name="D" org.eventb.core.label="inv9" org.eventb.core.predicate="children = dom(notreadbooks)"/>
+</org.eventb.core.machineFile>
